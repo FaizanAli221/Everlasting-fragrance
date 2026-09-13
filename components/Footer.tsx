@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Facebook, Instagram, ArrowRight } from "lucide-react";
 
 const quickLinks = [
-  "Privacy Policy",
-  "About Us",
-  "Why Everlast Fragrances?",
-  "Shipping Policy",
-  "Terms of Service",
-  "Refund Policy",
+  { label: "Shop All Fragrances", href: "/shop" },
+  { label: "Track Your Order", href: "/track-order" },
+  { label: "About Us & Craft", href: "/about" },
+  { label: "Contact & FAQ", href: "/contact" },
+  { label: "Shipping Policy", href: "/shipping-policy" },
+  { label: "Refund & Return Policy", href: "/refund-policy" },
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms" },
 ];
 
 export default function Footer() {
@@ -45,10 +48,10 @@ export default function Footer() {
             WhatsApp: +92 328 3383607
           </p>
           <div className="mt-5 flex gap-4">
-            <a href="#" aria-label="Facebook" className="hover:text-gold">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="hover:text-gold">
               <Facebook size={18} />
             </a>
-            <a href="#" aria-label="Instagram" className="hover:text-gold">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-gold">
               <Instagram size={18} />
             </a>
           </div>
@@ -58,15 +61,15 @@ export default function Footer() {
           <h4 className="text-sm font-semibold tracking-wide text-parchment/90">
             Quick Links
           </h4>
-          <ul className="mt-4 space-y-3">
-            {quickLinks.map((l) => (
-              <li key={l}>
-                <a
-                  href="#"
-                  className="text-sm text-parchment/70 hover:text-gold"
+          <ul className="mt-4 space-y-2.5">
+            {quickLinks.map((item) => (
+              <li key={item.label}>
+                <Link
+                  href={item.href}
+                  className="text-xs text-parchment/70 transition-colors hover:text-gold"
                 >
-                  {l}
-                </a>
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>

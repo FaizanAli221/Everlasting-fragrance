@@ -9,11 +9,12 @@ import { getProducts } from "@/lib/api";
 import { Product } from "@/lib/types";
 
 const links = [
-  { label: "Shop All", href: "/#shop" },
-  { label: "Men", href: "/#shop" },
-  { label: "Women", href: "/#shop" },
-  { label: "Our Story", href: "/#story" },
-  { label: "Contact", href: "/#footer" },
+  { label: "Shop All", href: "/shop" },
+  { label: "Men", href: "/shop?category=Men" },
+  { label: "Women", href: "/shop?category=Women" },
+  { label: "Track Order", href: "/track-order" },
+  { label: "Our Story", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -63,15 +64,15 @@ export default function Navbar() {
           >
             <Menu size={22} strokeWidth={1.5} />
           </button>
-          <nav className="hidden gap-7 lg:flex">
+          <nav className="hidden gap-6 lg:flex">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.label}
                 href={l.href}
                 className="text-[13px] font-medium tracking-wide text-ink/70 transition-colors hover:text-ink"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
@@ -89,9 +90,13 @@ export default function Navbar() {
           <button aria-label="Search" onClick={() => setSearchOpen(true)}>
             <Search size={20} strokeWidth={1.5} />
           </button>
-          <button aria-label="Account" className="hidden sm:block">
+          <Link
+            href="/track-order"
+            aria-label="Track Order"
+            className="hidden sm:block text-ink/80 hover:text-ink"
+          >
             <User size={20} strokeWidth={1.5} />
-          </button>
+          </Link>
           <button
             aria-label="Open cart"
             onClick={openCart}
@@ -124,14 +129,14 @@ export default function Navbar() {
             </div>
             <nav className="flex flex-col gap-5">
               {links.map((l) => (
-                <a
+                <Link
                   key={l.label}
                   href={l.href}
                   onClick={() => setMenuOpen(false)}
                   className="text-base font-medium text-ink/80 hover:text-ink"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -163,9 +168,9 @@ export default function Navbar() {
             {results.length > 0 && (
               <div className="mx-auto mt-4 max-w-2xl divide-y divide-ink/10">
                 {results.map((p) => (
-                  <a
+                  <Link
                     key={p.id}
-                    href={`/#shop`}
+                    href={`/products/${p.slug}`}
                     onClick={() => setSearchOpen(false)}
                     className="flex items-center justify-between py-3 text-sm hover:text-clay"
                   >
@@ -173,7 +178,7 @@ export default function Navbar() {
                     <span className="text-ink/50">
                       Rs.{p.price.toLocaleString()}
                     </span>
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}

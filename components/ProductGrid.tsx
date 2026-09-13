@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { products as initialProducts } from "@/data/products";
 import { getProducts } from "@/lib/api";
 import { Product } from "@/lib/types";
@@ -72,9 +73,12 @@ export default function ProductGrid() {
       </div>
 
       <div className="mt-12 flex justify-center">
-        <button className="border border-ink px-8 py-3 text-[13px] font-semibold tracking-wide text-ink transition-colors hover:bg-ink hover:text-parchment">
-          View All
-        </button>
+        <Link
+          href="/shop"
+          className="border border-ink px-8 py-3 text-[13px] font-semibold tracking-wide text-ink transition-colors hover:bg-ink hover:text-parchment"
+        >
+          View All Fragrances
+        </Link>
       </div>
     </section>
   );

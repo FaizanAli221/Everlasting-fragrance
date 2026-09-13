@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Product } from "@/lib/types";
 import { useCart } from "@/context/CartContext";
 import StarRating from "./StarRating";
@@ -16,11 +17,14 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.badge}
           </span>
         )}
-        <div className="transition-transform duration-300 group-hover:scale-105">
+        <Link
+          href={`/products/${product.slug}`}
+          className="flex h-full w-full items-center justify-center transition-transform duration-300 group-hover:scale-105"
+        >
           <BottleGraphic accent={product.accent} label={product.name} size="md" />
-        </div>
+        </Link>
 
-        <div className="absolute inset-x-3 bottom-3 flex translate-y-2 gap-2 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100">
+        <div className="absolute inset-x-3 bottom-3 flex translate-y-2 gap-2 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 z-10">
           <button
             onClick={() => addItem(product)}
             className="flex-1 bg-ink py-2.5 text-[11px] font-semibold tracking-wide text-parchment hover:bg-ink/85"
@@ -40,7 +44,11 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="mt-3">
-        <h3 className="text-sm font-medium text-ink">{product.name}</h3>
+        <Link href={`/products/${product.slug}`}>
+          <h3 className="text-sm font-medium text-ink hover:text-clay transition-colors">
+            {product.name}
+          </h3>
+        </Link>
         <div className="mt-1 flex items-center gap-1.5">
           <StarRating rating={product.rating} size={12} />
           <span className="text-xs text-ink/50">
