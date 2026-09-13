@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { getProductBySlug as getSeedProduct } from "@/data/products";
 import { getProductBySlug } from "@/lib/api";
@@ -67,9 +68,20 @@ export default function Hero() {
         </div>
 
         <div className="order-1 flex justify-center lg:order-2">
-          <div className="relative flex h-[320px] w-[320px] items-center justify-center rounded-full bg-gradient-to-br from-parchment/10 to-transparent sm:h-[400px] sm:w-[400px]">
-            <div className="absolute inset-8 rounded-full border border-goldLight/20" />
-            <BottleGraphic accent={hero.accent} label={hero.name} size="lg" />
+          <div className="relative flex h-[340px] w-[340px] items-center justify-center overflow-hidden rounded-2xl border border-goldLight/25 bg-black/40 p-2 shadow-2xl sm:h-[420px] sm:w-[420px]">
+            {hero.image ? (
+              <div className="relative h-full w-full overflow-hidden rounded-xl">
+                <Image
+                  src={hero.image}
+                  alt={hero.name}
+                  fill
+                  priority
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            ) : (
+              <BottleGraphic accent={hero.accent} label={hero.name} size="lg" />
+            )}
           </div>
         </div>
       </div>

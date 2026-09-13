@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/lib/types";
 import { useCart } from "@/context/CartContext";
 import StarRating from "./StarRating";
@@ -19,9 +20,19 @@ export default function ProductCard({ product }: { product: Product }) {
         )}
         <Link
           href={`/products/${product.slug}`}
-          className="flex h-full w-full items-center justify-center transition-transform duration-300 group-hover:scale-105"
+          className="relative flex h-full w-full items-center justify-center transition-transform duration-500 group-hover:scale-105"
         >
-          <BottleGraphic accent={product.accent} label={product.name} size="md" />
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className="object-cover"
+            />
+          ) : (
+            <BottleGraphic accent={product.accent} label={product.name} size="md" />
+          )}
         </Link>
 
         <div className="absolute inset-x-3 bottom-3 flex translate-y-2 gap-2 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 z-10">

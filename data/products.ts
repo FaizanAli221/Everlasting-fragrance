@@ -12,6 +12,7 @@ export const products: Product[] = [
     category: "Top Seller / Men",
     size: "55 ML | Parfum",
     accent: "#141414",
+    image: "/products/office-for-men.jpg",
     description:
       "The fragrance that started it all. A clean, classy, unmistakably masculine scent built for long days and longer meetings — sharp enough for the boardroom, warm enough to be remembered after you leave it.",
     notes: {
@@ -34,6 +35,7 @@ export const products: Product[] = [
     category: "Luxury",
     size: "55 ML | Parfum",
     accent: "#e7c467",
+    image: "/products/imagination.jpg",
     description:
       "A radiant, citrus-driven composition with a smooth amber trail — our premium interpretation for those who want a designer signature without the designer price tag.",
     notes: {
@@ -53,6 +55,7 @@ export const products: Product[] = [
     category: "Men / Unisex",
     size: "55 ML | Parfum",
     accent: "#caa233",
+    image: "/products/hacivat.jpg",
     description:
       "A rich, boozy-fruit composition that opens sweet and settles into a warm, resinous base. Unisex, distinctive, and impossible to ignore in a room.",
     notes: {
@@ -72,6 +75,7 @@ export const products: Product[] = [
     category: "Fresh / Summer",
     size: "55 ML | Parfum",
     accent: "#4fa7d8",
+    image: "/products/hawas-ice.jpg",
     description:
       "An icy citrus opening layered over neroli and a soft vanilla-orchid base — built for humid afternoons, made to outlast them.",
     notes: {
@@ -92,6 +96,7 @@ export const products: Product[] = [
     category: "Oriental / Luxury",
     size: "55 ML | Parfum",
     accent: "#6b3a1f",
+    image: "/products/imperial-valley.jpg",
     description:
       "Deep saffron and oud wrapped in dark rose — an oriental heavyweight for evenings that call for presence, not subtlety.",
     notes: {
@@ -111,6 +116,7 @@ export const products: Product[] = [
     category: "Gourmand / Warm",
     size: "55 ML | Parfum",
     accent: "#c98a3e",
+    image: "/products/angels-share.jpg",
     description:
       "A gourmand classic — cognac, cinnamon and oak, finished with a whisper of vanilla. Smells expensive because it is meant to.",
     notes: {
@@ -130,6 +136,7 @@ export const products: Product[] = [
     category: "Men / Classic",
     size: "55 ML | Parfum",
     accent: "#3a4a2f",
+    image: "/products/creed-aventus.jpg",
     description:
       "Smoky pineapple, birch and oakmoss — the fragrance every 'confident, successful man' scent has been chasing since 2010.",
     notes: {
@@ -149,6 +156,7 @@ export const products: Product[] = [
     category: "Citrus / Woody",
     size: "55 ML | Parfum",
     accent: "#dcdcdc",
+    image: "/products/tygar.jpg",
     description:
       "A crisp citrus-woody blend that reads clean from the first spray to the last hour — an everyday signature with a designer edge.",
     notes: {
@@ -168,6 +176,7 @@ export const products: Product[] = [
     category: "Women",
     size: "55 ML | Parfum",
     accent: "#c94f6d",
+    image: "/products/office-for-women.jpg",
     description:
       "The women's counterpart to our bestseller — floral, warm and quietly confident. Built to move seamlessly from morning meetings to evening plans.",
     notes: {

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { topSellers } from "@/data/products";
 import { getProducts } from "@/lib/api";
@@ -40,9 +42,22 @@ export default function Spotlight() {
       <h2 className="mt-2 font-display text-3xl sm:text-4xl">Top Seller</h2>
 
       <div className="mt-8 grid grid-cols-1 overflow-hidden rounded-sm border border-ink/10 sm:grid-cols-2">
-        <div className="relative flex items-center justify-center bg-gradient-to-br from-[#5c1a1a] via-[#7a2323] to-[#2a0d0d] py-16">
-          <div className="absolute h-40 w-40 rounded-full bg-[#f3d4b0]/30 blur-2xl" />
-          <BottleGraphic accent={product.accent} label={product.name} size="lg" />
+        <div className="relative flex min-h-[360px] items-center justify-center bg-gradient-to-br from-[#1b1713] via-[#2a221a] to-[#12100d] p-8 sm:p-12">
+          {product.image ? (
+            <Link
+              href={`/products/${product.slug}`}
+              className="relative h-[300px] w-[300px] sm:h-[350px] sm:w-[350px] overflow-hidden rounded-xl shadow-2xl transition-transform duration-500 hover:scale-105"
+            >
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+              />
+            </Link>
+          ) : (
+            <BottleGraphic accent={product.accent} label={product.name} size="lg" />
+          )}
         </div>
         <div className="flex flex-col justify-center bg-parchment px-8 py-10 sm:px-12">
           <span className="text-[11px] font-semibold tracking-widest2 text-clay">

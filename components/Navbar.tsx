@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X, Search, User, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { products as seedProducts } from "@/data/products";
@@ -172,10 +173,27 @@ export default function Navbar() {
                     key={p.id}
                     href={`/products/${p.slug}`}
                     onClick={() => setSearchOpen(false)}
-                    className="flex items-center justify-between py-3 text-sm hover:text-clay"
+                    className="flex items-center justify-between py-2.5 text-sm hover:text-clay group"
                   >
-                    <span>{p.name}</span>
-                    <span className="text-ink/50">
+                    <div className="flex items-center gap-3">
+                      {p.image ? (
+                        <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded bg-bone">
+                          <Image
+                            src={p.image}
+                            alt={p.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="h-10 w-10 rounded bg-bone" />
+                      )}
+                      <div className="flex flex-col">
+                        <span className="font-medium group-hover:text-clay text-ink">{p.name}</span>
+                        <span className="text-[11px] text-ink/50">{p.category}</span>
+                      </div>
+                    </div>
+                    <span className="font-semibold text-xs text-ink/70">
                       Rs.{p.price.toLocaleString()}
                     </span>
                   </Link>

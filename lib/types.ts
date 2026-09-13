@@ -19,6 +19,7 @@ export interface Product {
   badge?: string;
   featured?: boolean;
   topSeller?: boolean;
+  image?: string;
 }
 
 export interface CartItem {

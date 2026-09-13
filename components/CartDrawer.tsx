@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { X, Minus, Plus, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import BottleGraphic from "./BottleGraphic";
@@ -106,12 +107,21 @@ export default function CartDrawer() {
                 <ul className="space-y-6">
                   {items.map(({ product, quantity }) => (
                     <li key={product.id} className="flex gap-4">
-                      <div className="flex h-20 w-20 shrink-0 items-center justify-center bg-bone">
-                        <BottleGraphic
-                          accent={product.accent}
-                          label={product.name}
-                          size="sm"
-                        />
+                      <div className="relative flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded bg-bone">
+                        {product.image ? (
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                          />
+                        ) : (
+                          <BottleGraphic
+                            accent={product.accent}
+                            label={product.name}
+                            size="sm"
+                          />
+                        )}
                       </div>
                       <div className="flex flex-1 flex-col">
                         <div className="flex items-start justify-between gap-2">

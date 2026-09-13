@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BottleGraphic from "@/components/BottleGraphic";
@@ -64,20 +65,33 @@ export default function ProductDetailPage({ params }: Props) {
       <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Visual Showcase */}
-          <div className="relative flex aspect-square items-center justify-center rounded-sm border border-ink/10 bg-bone p-8">
+          <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-sm border border-ink/10 bg-bone shadow-xs">
             {product.badge && (
-              <span className="absolute left-6 top-6 bg-ink px-3 py-1 text-xs font-semibold tracking-wide text-parchment">
+              <span className="absolute left-6 top-6 z-10 bg-ink px-3 py-1 text-xs font-semibold tracking-wide text-parchment">
                 {product.badge}
               </span>
             )}
-            <div className="scale-110 transition-transform duration-300 hover:scale-125">
-              <BottleGraphic
-                accent={product.accent}
-                label={product.name}
-                size="lg"
-              />
-            </div>
-            <div className="absolute bottom-4 right-4 text-[11px] font-medium tracking-wider text-ink/40">
+            {product.image ? (
+              <div className="relative h-full w-full">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            ) : (
+              <div className="scale-110 transition-transform duration-300 hover:scale-125">
+                <BottleGraphic
+                  accent={product.accent}
+                  label={product.name}
+                  size="lg"
+                />
+              </div>
+            )}
+            <div className="absolute bottom-4 right-4 z-10 rounded bg-black/50 px-2 py-0.5 text-[11px] font-medium tracking-wider text-parchment backdrop-blur-xs">
               {product.size}
             </div>
           </div>
