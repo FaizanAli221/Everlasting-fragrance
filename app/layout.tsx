@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
@@ -41,6 +42,11 @@ export default function RootLayout({
           <CartDrawer />
           <WhatsAppWidget />
         </CartProvider>
+        <Script
+          src="https://cdn.zanderio.ai/widget/loader.js"
+          data-id="wdg_GUNnLhwdHeG6enxNb1f9wShT"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
